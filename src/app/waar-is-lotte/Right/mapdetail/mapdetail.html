@@ -1,1 +1,18 @@
-<p>mapdetail works!</p>
+@if (data) {
+    <div class="mt-4 p-4 bg-white rounded shadow">
+      <h2 class="text-lg font-bold">{{ data.title }}</h2>
+      <div class="flex gap-4 mt-2">
+        <img [src]="data.imageUrl" alt="Foto" class="w-40 h-28 object-cover rounded" />
+        <div>
+          <p class="text-sm text-gray-600">📍 {{ data.place }}</p>
+          <p class="text-sm text-gray-500">🕒 {{ data.date }}</p>
+          <p class="mt-2 text-sm">{{ data.description }}</p>
+        </div>
+      </div>
+    </div>
+  }
+  @else {
+    <div class="mt-4 p-4 bg-white rounded shadow">
+      <p class="text-sm text-gray-600">Klik op een marker om details te zien</p>
+    </div>
+  }
