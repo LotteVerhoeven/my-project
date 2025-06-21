@@ -68,7 +68,6 @@ export class Mapview implements OnInit, OnDestroy {
 
   private setupMapEventListeners(): void {
     this.map.on('load', () => {
-      console.log('Map loaded successfully');
       this.loadMarkersFromAPI();
     });
 
@@ -106,9 +105,15 @@ export class Mapview implements OnInit, OnDestroy {
   // ===== MARKER MANAGEMENT =====
 
   private loadMarkersFromAPI(): void {
-    this.markerDataService.getMarkerData().subscribe((markers: MarkerData[]) => {
-      this.markers = markers;
-      this.addMarkersToMap();
+    this.markerDataService.getMarkerData().subscribe({
+      next: (markers: MarkerData[]) => {
+        this.markers = markers;
+        this.addMarkersToMap();
+      },
+      error: (error) => {
+        console.error('Error loading markers:', error);
+        this.markers = [];
+      }
     });
   }
 
