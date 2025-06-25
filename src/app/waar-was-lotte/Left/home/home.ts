@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { TimelineDataService } from '../../../services/timeline-data.service';
+import { TimelineDataService, TimelineYear } from '../../../services/timeline-data.service';
 import { TimelineInteractionService } from '../../../services/timeline-interaction.service';
 import { TimelineItem } from '../../../models/timeline-item.interface';
 
@@ -12,13 +12,13 @@ import { TimelineItem } from '../../../models/timeline-item.interface';
   styleUrls: ['./home.css']
 })
 export class Home implements OnInit {
-  timelineItems$: Observable<TimelineItem[]>;
+  timelineYears$: Observable<TimelineYear[]>;
 
   constructor(
     private timelineDataService: TimelineDataService,
     private timelineInteractionService: TimelineInteractionService
   ) {
-    this.timelineItems$ = this.timelineDataService.getTimelineItems();
+    this.timelineYears$ = this.timelineDataService.getTimelineItemsByYear();
   }
 
   ngOnInit(): void {
