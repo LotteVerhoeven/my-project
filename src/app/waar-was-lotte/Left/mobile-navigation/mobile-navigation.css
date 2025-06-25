@@ -1,0 +1,26 @@
+.nav-link {
+  @apply text-[#194a52] transition-colors duration-200;
+}
+
+.active-link {
+  @apply bg-[#9ae0e5];
+}
+
+/* Smooth hamburger menu animation */
+.mobile-menu {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Ensure proper mobile menu behavior */
+@media (max-width: 767px) {
+  .mobile-menu.closed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  
+  .mobile-menu.open {
+    max-height: 24rem; /* 384px */
+    opacity: 1;
+  }
+}

@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-navigation',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navigation.html',
-  styleUrl: './navigation.css'
+  styleUrls: ['./navigation.css']
 })
 export class Navigation {
 
