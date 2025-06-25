@@ -1,7 +1,7 @@
 <h2 class="text-3xl font-bold text-[#194a52] mb-3">About Me</h2>
 <p class="text-lg font-medium text-[#4b5563] mb-5">Passionate frontend developer with a love for creative pursuits.</p>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   <div *ngFor="let hobby of hobbies" class="rounded-lg bg-[#e6f7f9] p-5 hover:shadow-md transition-shadow duration-300">
     <div class="flex items-center mb-4">
       <div class="w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0 overflow-hidden" [innerHTML]="getSafeHtml(hobby.svg)"></div>
@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div class="rounded-lg border border-gray-300 p-5 mt-5">
+<div class="rounded-lg border border-gray-300 p-5 mt-6">
   <h3 class="text-xl text-[#194a52] font-semibold mb-2">My Story</h3>
   <p class="text-sm text-[#4b5563] leading-relaxed italic">
     "I'm a frontend developer who believes in the perfect blend of technology and creativity. 

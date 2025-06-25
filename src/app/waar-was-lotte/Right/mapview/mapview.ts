@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MarkerDataService } from '../../../services/marker-data.service';
+import { TimelineInteractionService } from '../../../services/timeline-interaction.service';
 import { MarkerData } from '../../../models/marker-data.interface';
 
 declare var mapboxgl: any;
@@ -33,17 +35,23 @@ export class Mapview implements OnInit, OnDestroy {
   private selectedMarkerData: MarkerData | null = null;
   private currentOpenPopup: any = null;
   private fullscreenChangeListener!: () => void;
+  private timelineSubscription: Subscription = new Subscription();
 
-  constructor(private markerDataService: MarkerDataService) {}
+  constructor(
+    private markerDataService: MarkerDataService,
+    private timelineInteractionService: TimelineInteractionService
+  ) {}
 
   // ===== LIFECYCLE METHODS =====
   
   ngOnInit(): void {
     this.initializeMap();
+    this.subscribeToTimelineInteractions();
   }
 
   ngOnDestroy(): void {
     this.cleanup();
+    this.timelineSubscription.unsubscribe();
   }
 
   // ===== MAP INITIALIZATION =====
@@ -195,6 +203,39 @@ export class Mapview implements OnInit, OnDestroy {
 
   private getMarkerForMarkerData(markerData: MarkerData): any {
     return this.markerObjects.get(markerData.id.toString()) || null;
+  }
+
+  // ===== TIMELINE INTERACTION =====
+
+  private subscribeToTimelineInteractions(): void {
+    this.timelineSubscription = this.timelineInteractionService.getSelectedMarkerId().subscribe(markerId => {
+      if (markerId) {
+        this.highlightMarkerById(markerId);
+      }
+    });
+  }
+
+  private highlightMarkerById(markerId: number): void {
+    const markerData = this.markers.find(m => m.id === markerId);
+    if (markerData) {
+      this.selectMarker(markerData);
+      this.focusOnMarker(markerData);
+      
+      // Only show popup in fullscreen mode
+      if (document.fullscreenElement) {
+        this.showPopupForMarkerData(markerData);
+      }
+    }
+  }
+
+  private focusOnMarker(markerData: MarkerData): void {
+    if (this.map) {
+      this.map.flyTo({
+        center: [markerData.lng, markerData.lat],
+        zoom: 8,
+        duration: 1000
+      });
+    }
   }
 
   // ===== PUBLIC METHODS =====
