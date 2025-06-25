@@ -135,7 +135,7 @@ export class Mapview implements OnInit, OnDestroy {
     if (!this.map) return;
 
     const marker = new mapboxgl.Marker({
-      color: '#99e0e6',
+      color: '#9ae0e5',
       scale: 0.7,
       anchor: 'center'
     }).setLngLat([lng, lat]);

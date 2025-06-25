@@ -1,0 +1,27 @@
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#194a52] mb-4">Tech Stack</h1>
+    <p class="text-gray-600 text-lg">Technologies and tools I work with to build modern web applications</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div 
+      *ngFor="let tech of technologies" 
+      class="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300">
+      
+      <div class="flex flex-col items-center">
+        <div class="w-8 h-8 mr-2 flex-shrink-0 mb-2" [innerHTML]="getSafeHtml(tech.icon)"></div>
+        <h3 class="text-lg font-semibold text-[#194a52]">{{ tech.name }}</h3>
+        <span class="text-sm text-[#4b5563] text-center font-medium">{{ tech.category }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-[#e6f7f9] rounded-lg p-5 mt-12 ">
+    <h2 class="text-lg lg:text-xl text-[#194a52] font-semibold mb-2">Always Learning</h2>
+    <p class="text-sm text-[#4b5563] leading-relaxed italic">
+        My journey from the travel industry to web development reflects my passion for exploration and 
+        connection. Just as I've explored different countries, I now explore different technologies and 
+        programming languages.
+    </p>
+  </div>
