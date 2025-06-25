@@ -18,8 +18,8 @@ export class Mapview implements OnInit, OnDestroy {
   private readonly accessToken = 'pk.eyJ1IjoicGlwbGFuZ2siLCJhIjoiY21jMjFycjN6MDJ6dDJpcXd4bzE2NG02bSJ9.SYsyEBhEJnywMa1f0QZtQA';
   private readonly mapConfig = {
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [50, 10] as [number, number],
-    zoom: 1,
+    center: [5, 52] as [number, number],
+    zoom: 2,
     attributionControl: true,
     logoPosition: 'bottom-left' as const
   };
