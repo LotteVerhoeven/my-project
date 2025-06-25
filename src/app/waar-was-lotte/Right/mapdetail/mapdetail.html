@@ -1,18 +1,39 @@
 @if (data) {
-    <div class="mt-4 p-4 bg-white rounded shadow">
-      <h2 class="text-lg font-bold">{{ data.title }}</h2>
-      <div class="flex gap-4 mt-2">
-        <img [src]="data.imageUrl" alt="Foto" class="w-40 h-28 object-cover rounded" />
-        <div>
-          <p class="text-sm text-gray-600">📍 {{ data.place }}</p>
-          <p class="text-sm text-gray-500">🕒 {{ data.date }}</p>
-          <p class="mt-2 text-sm">{{ data.description }}</p>
+    <div class="h-full bg-white rounded shadow overflow-hidden">
+      <!-- Image container (fixed width) -->
+      <div class="flex flex-col lg:flex-row">
+        <div class="w-full lg:w-1/2 flex-shrink-0 h-48 lg:h-auto aspect-[4/3]">
+          <img [src]="data.image_url" alt="Foto" class="w-full h-full rounded object-cover" />
+        </div>
+      
+      <!-- Text container (fills remaining space) -->
+        <div class="flex flex-col justify-center space-y-4 p-5 min-w-0 overflow-y-auto">
+          <h2 class="text-3xl font-bold text-[#194a52]">{{ data.title }}</h2>
+          <p class="text-base text-[#61B4C7] flex items-center">
+            <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="Location">
+              <path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="#61b4c7" class="color000000 svgShape"></path>
+              <path fill="none" d="M0 0h48v48H0z"></path>
+            </svg>            
+            {{ data.place }}</p>
+          <p class="text-base text-[#4b5563] flex items-center">
+            <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="Calendar">
+              <path fill="#4b5563" d="M16.14 10.11h-3V8.16a1.5 1.5 0 0 1 3 0Zm11.57-1.95a1.5 1.5 0 0 0-3 0v1.95h3Zm11.58 0a1.5 1.5 0 0 0-3 0v1.95h3Zm11.57 0a1.5 1.5 0 1 0-3 0v1.95h3Zm5.66 1.95h-5.66v2a1.5 1.5 0 0 1-3 0v-2h-8.57v2a1.5 1.5 0 0 1-3 0v-2h-8.58v2a1.5 1.5 0 0 1-3 0v-2h-8.57v2a1.5 1.5 0 0 1-3 0v-2H7.48a1 1 0 0 0-1 1v4.77a1 1 0 0 0 1 1h49a1 1 0 0 0 1-1v-4.77a1 1 0 0 0-.96-1Zm-48 9.77h47V53a1 1 0 0 1-1 1h-45a1 1 0 0 1-1-1Zm32.58 8a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12a1.5 1.5 0 0 0-1.5 1.53Zm0 9.05a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12a1.5 1.5 0 0 0-1.5 1.57Zm0 9a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12a1.5 1.5 0 0 0-1.5 1.57ZM27 27.91a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12a1.5 1.5 0 0 0-1.46 1.5ZM27 37a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12A1.5 1.5 0 0 0 27 37Zm0 9a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.12A1.5 1.5 0 0 0 27 46ZM12.86 27.91a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.08a1.5 1.5 0 0 0-1.5 1.5Zm0 9.05a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 1 0 0-3h-7.08a1.5 1.5 0 0 0-1.5 1.54Zm0 9a1.5 1.5 0 0 0 1.5 1.5h7.08a1.5 1.5 0 0 0 0-3h-7.08a1.5 1.5 0 0 0-1.5 1.54Z" class="color222222 svgShape"></path>
+            </svg>            
+            {{ data.date }}</p>
         </div>
       </div>
+      <p class="text-sm italic p-5">{{ data.description }}</p>
     </div>
   }
   @else {
-    <div class="mt-4 p-4 bg-white rounded shadow">
-      <p class="text-sm text-gray-600">Klik op een marker om details te zien</p>
+    <div class="h-full bg-white rounded shadow flex flex-col items-center justify-center p-4 ">
+      <div class="flex items-center justify-center size-30 rounded-full bg-[#e6f7f9]">
+        <svg class="size-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="Location">
+          <path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="#61b4c7" class="color000000 svgShape"></path>
+          <path fill="none" d="M0 0h48v48H0z"></path>
+        </svg>
+      </div>
+      <p class="text-lg text-[#194a52] font-semibold mt-4">Explore my journey on the map</p>
+      <p class="text-base text-[#4b5563] mt-2">Click on a marker to see details</p>
     </div>
   }

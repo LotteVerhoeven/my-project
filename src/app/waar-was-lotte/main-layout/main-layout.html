@@ -1,10 +1,12 @@
-<div class="flex h-screen">
-    <div class="w-1/2 border-r border-gray-300 p-4 overflow-y-auto">
-      <app-navigation></app-navigation>
-      <router-outlet></router-outlet>
-    </div>
-    <div class="w-4/7 p-4 bg-gray-100">
-      <app-persistent-panel></app-persistent-panel>
-    </div>
+<div class="flex flex-col lg:flex-row h-screen">
+  <div class="w-full lg:w-2/12 border-r border-gray-300">
+    <app-navigation></app-navigation>
+  </div>
+  <div class="w-full lg:w-5/12 p-8 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="w-full lg:w-5/12 p-4 bg-[#f9fafb]">
+    <app-persistent-panel></app-persistent-panel>
+  </div>
 </div>
 

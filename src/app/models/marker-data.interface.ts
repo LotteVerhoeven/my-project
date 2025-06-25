@@ -6,5 +6,5 @@ export interface MarkerData {
   place: string;
   date: string;
   description: string;
-  imageUrl?: string;
+  image_url?: string;
 }

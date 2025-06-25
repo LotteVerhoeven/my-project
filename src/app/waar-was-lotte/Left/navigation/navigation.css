@@ -1,0 +1,7 @@
+.nav-link {
+@apply text-[#194a52] hover:bg-[#e6f7f9];
+}
+
+.active-link {
+@apply bg-[#9ae0e5] hover:bg-[#9ae0e5];
+}
