@@ -1,8 +1,8 @@
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full gap-4">
     <div class="w-full h-[45vh] flex-shrink-0">
         <app-mapview (markerClicked)="onMarkerClicked($event)"></app-mapview>
     </div>
-    <div class="flex-grow min-h-0 pt-4">
+    <div class="h-[50vh]">
         <app-mapdetail [data]="selectedMarkerData"></app-mapdetail>
     </div>
 </div>

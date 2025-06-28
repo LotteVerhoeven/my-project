@@ -1,5 +1,5 @@
 @if (data) {
-    <div class="h-full bg-white rounded shadow overflow-hidden">
+    <div class="h-full bg-white rounded shadow overflow-y-auto">
       <!-- Image container (fixed width) -->
       <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/2 flex-shrink-0 h-48 md:h-auto aspect-[4/3]">
@@ -7,7 +7,7 @@
         </div>
       
       <!-- Text container (fills remaining space) -->
-        <div class="flex flex-col justify-center space-y-2 lg:space-y-4 p-5 min-w-0 overflow-y-auto">
+        <div class="flex flex-col justify-center space-y-2 lg:space-y-4 p-5 min-w-0">
           <h2 class="text-2xl lg:text-3xl font-bold text-[#194a52]">{{ data.title }}</h2>
           <p class="text-sm lg:text-base text-[#61B4C7] flex items-center">
             <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="Location">
