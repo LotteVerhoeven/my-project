@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { MarkerDataService } from '../../../services/marker-data.service';
 import { TimelineInteractionService } from '../../../services/timeline-interaction.service';
 import { MarkerData } from '../../../models/marker-data.interface';
+import { environment } from '../../../../environments/environment';
 
 declare var mapboxgl: any;
 
@@ -17,7 +18,7 @@ export class Mapview implements OnInit, OnDestroy {
   @Output() markerClicked = new EventEmitter<MarkerData>();
 
   // Map configuration
-  private readonly accessToken = 'pk.eyJ1IjoicGlwbGFuZ2siLCJhIjoiY21jMjFycjN6MDJ6dDJpcXd4bzE2NG02bSJ9.SYsyEBhEJnywMa1f0QZtQA';
+  private readonly accessToken = environment.mapboxAccessToken;
   private readonly mapConfig = {
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [5, 52] as [number, number],
