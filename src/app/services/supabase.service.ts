@@ -5,6 +5,7 @@ import { HobbyData } from '../models/hobby-data.interface';
 import { TimelineItem } from '../models/timeline-item.interface';
 import { TechStack } from '../models/tech-stack.interface';
 import { WorkExperience } from '../models/work-experience.interface';
+import { Certificate } from '../models/certificates.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -81,5 +82,15 @@ export class SupabaseService {
 
     if (error) throw error;
     return data as WorkExperience[];
+  }
+
+  async getCertificates(): Promise<Certificate[]> {
+    const { data, error } = await this.supabase
+      .from('certificates')
+      .select('*')
+      .order('id', { ascending: false });
+    
+    if (error) throw error;
+    return data as Certificate[];
   }
 }

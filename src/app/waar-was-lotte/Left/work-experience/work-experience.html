@@ -2,7 +2,7 @@
 <p class="text-base lg:text-lg font-medium text-[#4b5563] mb-5">My professional journey and the technologies I work with.</p>
 
 <div class="space-y-6">
-  <div *ngFor="let experience of workExperiences" class="rounded-lg bg-white border border-gray-300 p-6 hover:shadow-md transition-shadow duration-300">
+  <div *ngFor="let experience of workExperiences" class="rounded-lg bg-white border border-gray-300 p-6">
     <div class="mb-4">
       <h3 class="text-lg lg:text-xl font-semibold text-[#194a52] mb-1">{{ experience.title }}</h3>
       <p class="text-base font-medium text-[#4b9aa0] mb-2">{{ experience.company }} • {{ experience.duration }}</p>
@@ -13,6 +13,32 @@
     <div class="flex flex-wrap gap-2">
       <span 
         *ngFor="let tech of experience.stack" 
+        class="px-3 py-1 bg-[#e6f7f9] text-[#194a52] text-sm font-medium rounded-full">
+        {{ tech }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<h2 class="text-2xl lg:text-3xl font-bold text-[#194a52] mb-3 mt-8">Certificates</h2>
+<p class="text-base lg:text-lg font-medium text-[#4b5563] mb-5">My professional certifications and achievements.</p> 
+
+<div class="space-y-6">
+  <div 
+    *ngFor="let certificate of certificates" 
+    class="rounded-lg bg-white border border-gray-300 p-6"
+    [class.cursor-pointer]="certificate.link"
+    [class.hover:border-[#4b9aa0]]="certificate.link"
+    [class.transition-colors]="certificate.link"
+    (click)="certificate.link ? openCertificateLink(certificate.link) : null">
+    <div>
+      <h3 class="text-lg lg:text-xl font-semibold text-[#194a52] mb-1">{{ certificate.title }}</h3>
+      <p class="text-base font-medium text-[#4b9aa0]">{{ certificate.institute }} • {{ certificate.date }}</p>
+    </div>
+    
+    <div *ngIf="certificate.stack && certificate.stack.length > 0" class="flex flex-wrap mt-6 gap-2">
+      <span 
+        *ngFor="let tech of certificate.stack" 
         class="px-3 py-1 bg-[#e6f7f9] text-[#194a52] text-sm font-medium rounded-full">
         {{ tech }}
       </span>
