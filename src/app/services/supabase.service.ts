@@ -3,6 +3,8 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { MarkerData } from '../models/marker-data.interface';
 import { HobbyData } from '../models/hobby-data.interface';
 import { TimelineItem } from '../models/timeline-item.interface';
+import { TechStack } from '../models/tech-stack.interface';
+import { WorkExperience } from '../models/work-experience.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -59,5 +61,25 @@ export class SupabaseService {
 
     if (error) throw error;
     return data as TimelineItem[];
+  }
+
+  async getTechStack(): Promise<TechStack[]> {
+    const { data, error } = await this.supabase
+      .from('tech_stack')
+      .select('*')
+      .order('id', { ascending: true });
+
+    if (error) throw error;
+    return data as TechStack[];
+  }
+
+  async getWorkExperience(): Promise<WorkExperience[]> {
+    const { data, error } = await this.supabase
+      .from('work_experience')
+      .select('*')
+      .order('id', { ascending: false });
+
+    if (error) throw error;
+    return data as WorkExperience[];
   }
 }

@@ -1,20 +1,15 @@
 <h2 class="text-2xl lg:text-3xl font-bold text-[#194a52] mb-3">Welcome to My Journey</h2>
 <p class="text-base lg:text-lg font-medium text-[#4b5563] mb-5">Explore my adventures and experiences through this interactive timeline.</p>
 
-<!-- Vertical Timeline -->
 <div class="relative">
   <div *ngFor="let yearGroup of timelineYears$ | async; let isLast = last" class="year-group mb-8">
-    
-    <!-- Year Header -->
     <div class="flex items-center mb-4">
       <div class="text-base lg:text-lg font-semibold text-[#194a52] mr-3 lg:mr-6 lg:w-16 lg:text-right bg-white lg:bg-transparent px-2 lg:px-0 relative z-20">
         {{ yearGroup.year }}
       </div>
     </div>
     
-    <!-- Timeline Items for this year -->
     <div class="relative ml-0 lg:ml-20">
-      <!-- Vertical line -->
       <div class="absolute left-6 lg:left-0 w-0.5 bg-[#e6f7f9]" 
            [style.height.px]="yearGroup.items.length * 120 + 20"
            [style.top.px]="-20"></div>
@@ -22,10 +17,8 @@
       <div *ngFor="let item of yearGroup.items; let i = index" 
            class="relative mb-6 last:mb-0">
         
-        <!-- Timeline dot -->
         <div class="absolute left-6 lg:left-0 w-3 h-3 bg-[#9ae0e5] rounded-full transform -translate-x-1/2 mt-6 z-10 border-2 border-white shadow-md"></div>
         
-        <!-- Timeline item content -->
         <div class="ml-12 lg:ml-8">
           <div class="timeline-item bg-white rounded-lg shadow p-3 border-l-4 border-[#9ae0e5] transition-all duration-200 cursor-pointer hover:bg-[#e6f7f9] hover:border-l-[6px] hover:ml-[-2px]"
                (click)="onTimelineItemClick(item)">
@@ -46,7 +39,6 @@
     </div>
   </div>
   
-  <!-- Empty state -->
   <div *ngIf="(timelineYears$ | async)?.length === 0" class="text-center py-8">
     <p class="text-gray-500">No timeline items found.</p>
   </div>

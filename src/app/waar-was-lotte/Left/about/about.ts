@@ -23,20 +23,16 @@ export class About implements OnInit {
   }
 
   getSafeHtml(svg: string): SafeHtml {
-    // For Safari, convert SVG to data URL for better compatibility
     if (this.isSafari()) {
       return this.getSafariCompatibleSvg(svg);
     }
     
-    // Normalize SVG for other browsers
     let normalizedSvg = svg;
     
-    // Ensure SVG has proper width and height attributes
     if (normalizedSvg.includes('<svg') && !normalizedSvg.includes('width=') && !normalizedSvg.includes('height=')) {
       normalizedSvg = normalizedSvg.replace('<svg', '<svg width="100%" height="100%"');
     }
     
-    // Add style to ensure proper sizing
     if (normalizedSvg.includes('<svg') && !normalizedSvg.includes('style=')) {
       normalizedSvg = normalizedSvg.replace('<svg', '<svg style="max-width: 100%; max-height: 100%; width: auto; height: auto;"');
     }
@@ -49,7 +45,6 @@ export class About implements OnInit {
   }
 
   private getSafariCompatibleSvg(svg: string): SafeHtml {
-    // Create an img element with SVG as data URL for Safari
     const encodedSvg = encodeURIComponent(svg);
     const dataUrl = `data:image/svg+xml,${encodedSvg}`;
     const imgElement = `<img src="${dataUrl}" style="width: 100%; height: 100%; object-fit: contain;" alt="Hobby icon">`;

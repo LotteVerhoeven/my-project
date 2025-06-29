@@ -38,7 +38,7 @@ export class TimelineDataService {
 
         return Array.from(yearGroups.entries())
           .map(([year, items]) => ({ year, items }))
-          .sort((a, b) => b.year - a.year); // Most recent year first
+          .sort((a, b) => b.year - a.year);
       })
     );
   }
